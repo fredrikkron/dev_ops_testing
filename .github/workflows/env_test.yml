@@ -32,3 +32,8 @@ jobs:
       - name: Question for the person
         run: |
           echo "$QUESTION today?"
+
+      - name: Creation information of Github repo
+        run: |
+          echo "I have created a repo called $GITHUB_REPOSITORY"
+      
