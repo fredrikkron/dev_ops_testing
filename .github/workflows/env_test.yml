@@ -17,7 +17,7 @@ jobs:
     # Environment variables
     env:
       GREET: "Hello"
-      QUESTION: "How are you?"
+      QUESTION: "How are you"
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
