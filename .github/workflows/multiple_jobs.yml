@@ -14,6 +14,7 @@ on:
 env:
   GREET: "Hello there"
   QUESTION: "How are you"
+  MY_SECRET: ${{ secrets.SECRET_EXERCISE_TESTING }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -37,8 +38,6 @@ jobs:
           echo "$QUESTION today?"
       
       - name: Use a secret
-        env:
-          MY_SECRET: ${{ secrets.SECRET_EXERCISE_TESTING }}
         run: |
           echo "Using secret: $MY_SECRET"
 
@@ -47,8 +46,6 @@ jobs:
     needs: Create_Message
     steps:
       - name: Creation information of Github repo
-        env:
-          MY_SECRET: ${{ secrets.SECRET_EXERCISE_TESTING }}
         run: |
           echo "I have created a repo called $GITHUB_REPOSITORY"
-          echo "Used a secret called "$MY_SECRET"
+          echo "Used a secret called $MY_SECRET"
