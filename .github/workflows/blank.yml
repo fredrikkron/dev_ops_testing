@@ -1,0 +1,54 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Multi Job Workflow
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+  schedule:
+  - cron: "0 0 * * 1-5"  # Runs at 00:00 every Monday to Friday
+
+    # Environment variables
+env:
+  GREET: "Hello there"
+  QUESTION: "How are you"
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains jobs called "Create_Message"
+  Create_Message:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Runs a set of commands using the runners shell
+      - name: Greeting
+        run: |
+          echo "$GREET my friend"
+          
+      - name: Question for the person
+        run: |
+          echo "$QUESTION today?"
+      
+      - name: Use a secret
+        env:
+          MY_SECRET: ${{ secrets.SECRET_EXERCISE_TESTING }}
+        run: |
+          echo "Using secret: $MY_SECRET"
+
+  Repo_Information:
+    runs-on: ubuntu-latest
+    needs: Create_Message
+    steps:
+      - name: Creation information of Github repo
+        env:
+          MY_SECRET: ${{ secrets.SECRET_EXERCISE_TESTING }}
+        run: |
+          echo "I have created a repo called $GITHUB_REPOSITORY"
+          echo "Used a secret called "$MY_SECRET"
