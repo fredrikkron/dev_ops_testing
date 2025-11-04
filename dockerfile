@@ -4,5 +4,5 @@
 
 # COPY app.py .
 
-# CMD ["python", "app.py"]
+# CMD ["python", "flask_app.py"]
 
