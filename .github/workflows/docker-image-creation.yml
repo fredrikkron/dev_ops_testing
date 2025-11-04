@@ -6,16 +6,7 @@ on:
 
 jobs:
 
-  create_image:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag hello-world:latest
-
-  push-image:
+  create-and-push-image:
 
     runs-on: ubuntu-latest
 
@@ -33,5 +24,5 @@ jobs:
         
           image_version: latest
       
-          docker_file: .
+          docker_file: Dockerfile
               
