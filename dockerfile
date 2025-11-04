@@ -1,8 +1,11 @@
-# FROM python:3.9
+FROM python:3.11-slim
 
-# WORKDIR /app
+WORKDIR /app
 
-# COPY app.py .
+COPY . /app
 
-# CMD ["python", "flask_app.py"]
+RUN pip install -r requirements.txt
 
+CMD ["python", "app.py"]
+
+EXPOSE 5000
