@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag hello-world:latest-1.5
+      run: docker build . --file Dockerfile --tag hello-world:latest
 
   push-image:
 
@@ -23,7 +23,6 @@ jobs:
       - name: Build and Push to DockerHub
         uses: MaximilianoBz/dockerhub-buildpush@v1.1
         with:
-        # Docker Registry Url, eg: docker.io
           registry_url: docker.io
           
           repository_name: fkron95/fk-demo
